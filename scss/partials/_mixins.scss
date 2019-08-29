@@ -1,0 +1,12 @@
+@mixin font-sm {
+  color: $white;
+  font-size: 16px;
+  margin: 0;
+  opacity: 0.7;
+}
+
+@mixin font-md {
+  color: $white;
+  font-size: 20px;
+  margin: 0;
+}

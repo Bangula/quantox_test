@@ -1,34 +1,63 @@
-header {
-  background: #fff;
-  padding: 20px;
-  border-radius: 30px;
-  h1 {
-    margin: 0;
-  }
-  h3 {
-    margin: 0;
-    margin-top: 10px;
-  }
+.lightBg {
+  background: $transparent-bg;
 }
 
-#days-nav {
+#daysNav {
   display: grid;
   grid-auto-flow: column;
   margin-top: 30px;
   justify-content: space-between;
   .navitem {
+    margin: 0;
     padding: 10px;
     text-align: center;
     background: $transparent-bg;
-    color: $nav-items-color;
     border-radius: 20px;
-    min-width: 40px;
+    cursor: pointer;
+    @include font-sm;
   }
 }
 
 main {
-  background: $transparent-bg;
-  padding: 20px;
   margin-top: 30px;
   border-radius: 30px;
+  .activityAvg {
+    background: $transparent-bg;
+    border-radius: 30px;
+    padding: 25px 20px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 4fr;
+  }
+  .activityData {
+    background: $transparent-bg;
+    border-radius: 30px;
+    padding: 25px 20px;
+    margin-top: 15px;
+    display: grid;
+    grid-auto-flow: column;
+  }
+  .iconContainer {
+  }
+  .activityContent {
+    color: $white;
+  }
+  h3 {
+    @include font-md;
+  }
+  p {
+    @include font-sm;
+    margin-top: 5px;
+  }
+  h2 {
+    @include font-md;
+    font-size: 38px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+  }
+  .activityContent2 {
+    h2 {
+      margin: 0 !important;
+    }
+  }
 }

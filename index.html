@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fitness Tracker</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -13,15 +17,79 @@
       <h3>Overview of your activity</h3>
     </header>
 
-    <div id="days-nav">
-      <a class="navitem" href="#">4<br />MON</a>
-      <a class="navitem" href="#">5<br />TUE</a>
-      <a class="navitem" href="#">6<br />WED</a>
-      <a class="navitem" href="#">7<br />THU</a>
-      <a class="navitem" href="#">8<br />FRI</a>
+    <div id="daysNav">
+      <p class="navitem">4<br />MON</p>
+      <p class="navitem">5<br />TUE</p>
+      <p class="navitem">6<br />WED</p>
+      <p class="navitem">7<br />THU</p>
+      <p class="navitem">8<br />FRI</p>
     </div>
 
-    <main></main>
+    <main>
+      <div class="lightBg activityAvg">
+        <div class="iconContainer">
+          <div class="iconWrap">
+            <i class="material-icons">
+              timer
+            </i>
+          </div>
+        </div>
+        <div class="activityContent">
+          <h3>Activity</h3>
+          <p>Average</p>
+          <h2>6h 40min</h2>
+        </div>
+        <div></div>
+      </div>
+      <div class="lightBg activityData">
+        <div class="iconContainer">
+          <div class="iconWrap">
+            <i class="material-icons">
+              timer
+            </i>
+          </div>
+        </div>
+        <div class="activityContent1">
+          <h3>Steps</h3>
+          <p>Total</p>
+        </div>
+        <div class="activityContent2">
+          <h2>7,400</h2>
+        </div>
+      </div>
+      <div class="lightBg activityData">
+        <div class="iconContainer">
+          <div class="iconWrap">
+            <i class="material-icons">
+              timer
+            </i>
+          </div>
+        </div>
+        <div class="activityContent1">
+          <h3>Calories</h3>
+          <p>Total burned</p>
+        </div>
+        <div class="activityContent2">
+          <h2>340</h2>
+        </div>
+      </div>
+      <div class="lightBg activityData">
+        <div class="iconContainer">
+          <div class="iconWrap">
+            <i class="material-icons">
+              timer
+            </i>
+          </div>
+        </div>
+        <div class="activityContent1">
+          <h3>Distance passed</h3>
+          <p>Average</p>
+        </div>
+        <div class="activityContent2">
+          <h2>2km</h2>
+        </div>
+      </div>
+    </main>
 
     <script src="js/app.js"></script>
   </body>

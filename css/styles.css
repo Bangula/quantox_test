@@ -1,14 +1,38 @@
+@font-face {
+  font-family: "fontBold";
+  src: url(fonts//HelveticaNeueBold.ttf) format("ttf");
+}
+
 body {
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#34c7a0), to(#008aa2));
-  background-image: linear-gradient(to bottom right, #34c7a0, #008aa2);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(9%, #34c7a0), color-stop(52%, #00b6a3), to(#008aa2));
+  background: linear-gradient(to bottom, #34c7a0 9%, #00b6a3 52%, #008aa2 100%);
   background-repeat: no-repeat;
-  height: 100vh;
   margin: 0;
   padding: 20px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 a {
   text-decoration: none;
+}
+
+i {
+  color: #fff;
+  font-size: 25px !important;
+  line-height: 40px !important;
+}
+
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  text-align: center;
 }
 
 header {
@@ -19,14 +43,24 @@ header {
 
 header h1 {
   margin: 0;
+  color: #00b6a3;
+  font-size: 34px;
+  font-weight: 700;
 }
 
 header h3 {
   margin: 0;
   margin-top: 10px;
+  color: #898694;
+  font-size: 16pt;
+  font-weight: 300;
 }
 
-#days-nav {
+.lightBg {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+#daysNav {
   display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
@@ -36,19 +70,73 @@ header h3 {
           justify-content: space-between;
 }
 
-#days-nav .navitem {
+#daysNav .navitem {
+  margin: 0;
   padding: 10px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.3);
-  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 20px;
-  min-width: 40px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+  opacity: 0.7;
 }
 
 main {
-  background: rgba(255, 255, 255, 0.3);
-  padding: 20px;
   margin-top: 30px;
   border-radius: 30px;
+}
+
+main .activityAvg {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  padding: 25px 20px;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  -ms-grid-columns: 1fr 4fr;
+      grid-template-columns: 1fr 4fr;
+}
+
+main .activityData {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  padding: 25px 20px;
+  margin-top: 15px;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+main .activityContent {
+  color: #fff;
+}
+
+main h3 {
+  color: #fff;
+  font-size: 20px;
+  margin: 0;
+}
+
+main p {
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+main h2 {
+  color: #fff;
+  font-size: 20px;
+  margin: 0;
+  font-size: 38px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+main .activityContent2 h2 {
+  margin: 0 !important;
 }
 /*# sourceMappingURL=styles.css.map */

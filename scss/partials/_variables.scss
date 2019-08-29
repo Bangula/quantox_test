@@ -1,6 +1,16 @@
+// @font-face {
+//   font-family: fontMedium;
+//   src: url(../../fonts/HelveticaNeue-Medium.otf) format("ttf");
+// }
+@font-face {
+  font-family: "fontBold";
+  src: url(fonts//HelveticaNeueBold.ttf) format("ttf");
+}
+
 /// Main colors
 $lightgreen: #34c7a0;
 $mediumgreen: #00b6a3;
 $darkgreen: #008aa2;
-$transparent-bg: rgba(255, 255, 255, 0.3);
-$nav-items-color: rgba(255, 255, 255, 0.8);
+$white: #fff;
+$transparent-bg: rgba(255, 255, 255, 0.25);
+$font-gray: #898694;
