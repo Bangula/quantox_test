@@ -1,5 +1,34 @@
-body {
-  background-image: linear-gradient(to bottom right, #34c7a0, #008aa2);
-  background-repeat: no-repeat;
-  height: 100vh;
+header {
+  background: #fff;
+  padding: 20px;
+  border-radius: 30px;
+  h1 {
+    margin: 0;
+  }
+  h3 {
+    margin: 0;
+    margin-top: 10px;
+  }
+}
+
+#days-nav {
+  display: grid;
+  grid-auto-flow: column;
+  margin-top: 30px;
+  justify-content: space-between;
+  .navitem {
+    padding: 10px;
+    text-align: center;
+    background: $transparent-bg;
+    color: $nav-items-color;
+    border-radius: 20px;
+    min-width: 40px;
+  }
+}
+
+main {
+  background: $transparent-bg;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 30px;
 }

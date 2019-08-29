@@ -1,4 +1,11 @@
 body {
+  background-image: linear-gradient(to bottom right, $lightgreen, $darkgreen);
+  background-repeat: no-repeat;
+  height: 100vh;
   margin: 0;
-  padding: 0;
+  padding: 20px;
+}
+
+a {
+  text-decoration: none;
 }
