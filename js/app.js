@@ -55,6 +55,10 @@ function getData() {
 }
 
 function firstScreenData() {
+  screenOneAnimations();
+  let temp = document.querySelector("#main div.activityAvg");
+  temp.style.opacity = "1";
+  temp.style.width = "100%";
   let totalSteps = 0;
   Object.values(daySteps).forEach(item => (totalSteps += item.steps));
   let averageActivity = (totalSteps * 0.5) / 60;
@@ -65,6 +69,14 @@ function firstScreenData() {
   document.getElementById("screen1-calories").innerHTML = calories;
   document.getElementById("screen1-distance").innerHTML = distance;
   console.log(averageActivity);
+}
+
+function screenOneAnimations() {
+  let animes = document.getElementsByClassName("s1-anime");
+  for (let i = 0; i < animes.length; i++) {
+    animes[i].style.opacity = "1";
+    animes[i].style.width = "100%";
+  }
 }
 
 function elementDetails(id) {

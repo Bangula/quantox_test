@@ -48,6 +48,7 @@ i {
 
 .detailsHeader h1 {
   color: #fff;
+  padding-left: 0;
 }
 
 .detailsHeader h3 {
@@ -56,6 +57,7 @@ i {
   margin: 0;
   opacity: 0.7;
   margin-top: 10px;
+  padding-left: 0;
 }
 
 .detailsHeader button i {
@@ -84,6 +86,7 @@ header h1 {
   color: #00b6a3;
   font-size: 34px;
   font-weight: 700;
+  padding-left: 7px;
 }
 
 header h3 {
@@ -92,6 +95,7 @@ header h3 {
   color: #898694;
   font-size: 16px;
   font-weight: 300;
+  padding-left: 7px;
 }
 
 header button {
@@ -151,6 +155,12 @@ main .activityAvg {
   grid-auto-flow: column;
   -ms-grid-columns: 1fr 4fr;
       grid-template-columns: 1fr 4fr;
+  background: rgba(255, 255, 255, 0.25);
+  opacity: 0;
+  width: 120px;
+  overflow: hidden;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 main .activityData {
@@ -163,6 +173,12 @@ main .activityData {
   grid-auto-flow: column;
   -ms-grid-columns: 1fr 2fr 2fr;
       grid-template-columns: 1fr 2fr 2fr;
+  opacity: 0;
+  width: 150px;
+  max-height: 96px;
+  overflow: hidden;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 main .activityContent {
@@ -181,6 +197,7 @@ main p {
   margin: 0;
   opacity: 0.7;
   margin-top: 5px;
+  min-width: 120px;
 }
 
 main h2 {

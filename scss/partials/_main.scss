@@ -30,6 +30,11 @@ main {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 1fr 4fr;
+    background: $transparent-bg;
+    opacity: 0;
+    width: 120px;
+    overflow: hidden;
+    transition: all 1s;
   }
   .activityData {
     background: $transparent-bg;
@@ -39,6 +44,11 @@ main {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 1fr 2fr 2fr;
+    opacity: 0;
+    width: 150px;
+    max-height: 96px;
+    overflow: hidden;
+    transition: all 1s;
   }
   .iconContainer {
   }
@@ -51,6 +61,7 @@ main {
   p {
     @include font-sm;
     margin-top: 5px;
+    min-width: 120px;
   }
   h2 {
     @include font-md;
