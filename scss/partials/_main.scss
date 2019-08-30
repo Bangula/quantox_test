@@ -16,6 +16,7 @@
     border-radius: 20px;
     cursor: pointer;
     @include font-sm;
+    transition: all 0.2s;
   }
 }
 
@@ -37,6 +38,7 @@ main {
     margin-top: 15px;
     display: grid;
     grid-auto-flow: column;
+    grid-template-columns: 1fr 2fr 2fr;
   }
   .iconContainer {
   }
@@ -56,9 +58,13 @@ main {
     margin-top: 25px;
     margin-bottom: 20px;
   }
+  .activityContent1 {
+    text-align: left;
+  }
   .activityContent2 {
     h2 {
       margin: 0 !important;
+      text-align: right;
     }
   }
 }

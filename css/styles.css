@@ -10,6 +10,7 @@ body {
   margin: 0;
   padding: 20px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  min-height: 100vh;
 }
 
 * {
@@ -35,10 +36,47 @@ i {
   text-align: center;
 }
 
+.active {
+  opacity: 1 !important;
+  background: #fff !important;
+  color: #34c7a0 !important;
+}
+
+.detailsHeader {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.detailsHeader h1 {
+  color: #fff;
+}
+
+.detailsHeader h3 {
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+.detailsHeader button i {
+  color: #fff !important;
+}
+
 header {
   background: #fff;
   padding: 20px;
   border-radius: 30px;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  -ms-grid-columns: 1fr 6fr;
+      grid-template-columns: 1fr 6fr;
+}
+
+header #headerBtn {
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 header h1 {
@@ -52,8 +90,21 @@ header h3 {
   margin: 0;
   margin-top: 10px;
   color: #898694;
-  font-size: 16pt;
+  font-size: 16px;
   font-weight: 300;
+}
+
+header button {
+  border: 0;
+  position: absolute;
+  background: transparent;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+header i {
+  color: black !important;
 }
 
 .lightBg {
@@ -82,6 +133,8 @@ header h3 {
   font-size: 16px;
   margin: 0;
   opacity: 0.7;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
 main {
@@ -108,6 +161,8 @@ main .activityData {
   display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
+  -ms-grid-columns: 1fr 2fr 2fr;
+      grid-template-columns: 1fr 2fr 2fr;
 }
 
 main .activityContent {
@@ -137,7 +192,12 @@ main h2 {
   margin-bottom: 20px;
 }
 
+main .activityContent1 {
+  text-align: left;
+}
+
 main .activityContent2 h2 {
   margin: 0 !important;
+  text-align: right;
 }
 /*# sourceMappingURL=styles.css.map */

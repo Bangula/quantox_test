@@ -1,7 +1,32 @@
+.detailsHeader {
+  background: $transparent-bg;
+  h1 {
+    color: $white;
+  }
+  h3 {
+    @include font-sm;
+    margin-top: 10px;
+  }
+  button {
+    i {
+      color: $white !important;
+    }
+  }
+}
+
 header {
   background: $white;
   padding: 20px;
   border-radius: 30px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 6fr;
+  #headerBtn {
+    position: relative;
+    transition: all 0.3s;
+  }
+  #headerText {
+  }
   h1 {
     margin: 0;
     color: $mediumgreen;
@@ -12,7 +37,17 @@ header {
     margin: 0;
     margin-top: 10px;
     color: $font-gray;
-    font-size: 16pt;
+    font-size: 16px;
     font-weight: 300;
+  }
+  button {
+    border: 0;
+    position: absolute;
+    background: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  i {
+    color: black !important;
   }
 }

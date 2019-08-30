@@ -12,20 +12,29 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Welcome!</h1>
-      <h3>Overview of your activity</h3>
+    <header id="header" class="container">
+      <div id="headerBtn">
+        <button id="headerArrow">
+          <i class="material-icons">
+            arrow_back_ios
+          </i>
+        </button>
+      </div>
+      <div id="headerText">
+        <h1>Welcome!</h1>
+        <h3>Overview of your activity</h3>
+      </div>
     </header>
 
-    <div id="daysNav">
-      <p class="navitem">4<br />MON</p>
-      <p class="navitem">5<br />TUE</p>
-      <p class="navitem">6<br />WED</p>
-      <p class="navitem">7<br />THU</p>
-      <p class="navitem">8<br />FRI</p>
+    <div id="daysNav" class="container">
+      <p class="navitem" id="mon">4<br />MON</p>
+      <p class="navitem" id="tue">5<br />TUE</p>
+      <p class="navitem" id="wed">6<br />WED</p>
+      <p class="navitem" id="thu">7<br />THU</p>
+      <p class="navitem" id="fri">8<br />FRI</p>
     </div>
 
-    <main>
+    <main id="main" class="container">
       <div class="lightBg activityAvg">
         <div class="iconContainer">
           <div class="iconWrap">
@@ -37,7 +46,7 @@
         <div class="activityContent">
           <h3>Activity</h3>
           <p>Average</p>
-          <h2>6h 40min</h2>
+          <h2 id="screen1-activity">&nbsp;</h2>
         </div>
         <div></div>
       </div>
@@ -45,7 +54,7 @@
         <div class="iconContainer">
           <div class="iconWrap">
             <i class="material-icons">
-              timer
+              directions_run
             </i>
           </div>
         </div>
@@ -54,14 +63,14 @@
           <p>Total</p>
         </div>
         <div class="activityContent2">
-          <h2>7,400</h2>
+          <h2 id="screen1-steps">&nbsp;</h2>
         </div>
       </div>
       <div class="lightBg activityData">
         <div class="iconContainer">
           <div class="iconWrap">
             <i class="material-icons">
-              timer
+              whatshot
             </i>
           </div>
         </div>
@@ -70,23 +79,23 @@
           <p>Total burned</p>
         </div>
         <div class="activityContent2">
-          <h2>340</h2>
+          <h2 id="screen1-calories">&nbsp;</h2>
         </div>
       </div>
       <div class="lightBg activityData">
         <div class="iconContainer">
           <div class="iconWrap">
             <i class="material-icons">
-              timer
+              my_location
             </i>
           </div>
         </div>
         <div class="activityContent1">
-          <h3>Distance passed</h3>
+          <h3>Distance</h3>
           <p>Average</p>
         </div>
         <div class="activityContent2">
-          <h2>2km</h2>
+          <h2 id="screen1-distance">&nbsp;</h2>
         </div>
       </div>
     </main>

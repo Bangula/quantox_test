@@ -6,12 +6,12 @@ body {
     $mediumgreen 52%,
     $darkgreen 100%
   );
-
   background-repeat: no-repeat;
   margin: 0;
   padding: 20px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
     Helvetica, Arial, "Lucida Grande", sans-serif;
+  min-height: 100vh;
 }
 * {
   box-sizing: border-box;
@@ -33,4 +33,10 @@ i {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   text-align: center;
+}
+
+.active {
+  opacity: 1 !important;
+  background: $white !important;
+  color: $lightgreen !important;
 }
