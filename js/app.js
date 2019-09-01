@@ -1,3 +1,4 @@
+//Initial state
 const daySteps = {
   mon: { steps: 0, date: [] },
   tue: { steps: 0, date: [] },
@@ -7,22 +8,6 @@ const daySteps = {
 };
 
 getData();
-
-(function initEventListeners() {
-  let navitems = document.getElementsByClassName("navitem");
-  for (let i = 0; i < navitems.length; i++) {
-    navitems[i].addEventListener("click", e => {
-      if (document.querySelector("#daysNav p.active") !== null) {
-        document.querySelector("#daysNav p.active").classList.remove("active");
-      }
-      e.target.classList.add("active");
-      elementDetails(e.target.id);
-    });
-  }
-  document
-    .getElementById("headerArrow")
-    .addEventListener("click", () => returnToScreen1());
-})();
 
 function getData() {
   document.getElementById("headerBtn").style.display = "none";
@@ -40,7 +25,9 @@ function getData() {
         daySteps[day].date = formatedDate;
       });
       firstScreenData();
-      console.log(daySteps);
+      createDaysNavigation();
+      document.getElementById("main").style.opacity = "1";
+      document.querySelector(".loader").style.opacity = "0";
     })
     .catch(err => console.log(err));
 }
@@ -61,7 +48,7 @@ function firstScreenData() {
   let avgActivity = minutesFormat(avgActivityMinutes);
   let calories = Math.round(totalSteps * 0.05);
   let distance = ((totalSteps / 5) * 0.762) / 1000;
-  let distanceFormated = Math.round(distance * 100) / 100;
+  let distanceFormated = Math.round(distance * 10) / 10;
 
   const data = [
     {
@@ -84,23 +71,28 @@ function firstScreenData() {
     }
   ];
 
-  // Creating templates from templates.js
+  // Insert component from components.js
   createTemplateOne("Activity", "Average", avgActivity, "timer");
   data.forEach(item =>
     createTemplateTwo(item.text1, item.text2, item.value, item.icon)
   );
 }
 
-function elementDetails(id) {
-  document.querySelector("#header").classList.add("detailsHeader");
-  document.getElementById("header").style.display = "grid";
-  document.getElementById("headerBtn").style.display = "block";
+// Insert component from components.js
+function createDaysNavigation() {
+  ["mon", "tue", "wed", "thu", "fri"].forEach(item => {
+    daysNavTemplate(
+      item,
+      "navitem",
+      daySteps[item].date[2],
+      item.toUpperCase()
+    );
+  });
+  initEventListeners();
+}
 
-  document.getElementById("main").innerHTML = "";
-  if (document.querySelector("#main.screen-1") !== null) {
-    document.querySelector("#main").classList.remove("screen-1");
-  }
-  document.querySelector("#main").classList.add("screen-2");
+function elementDetails(id) {
+  handleScreen2Styles();
 
   let stepsForDay = daySteps[id].steps;
   let fullDate = daySteps[id].date;
@@ -110,6 +102,16 @@ function elementDetails(id) {
   document.querySelector("#headerText h3").innerHTML = `${monthName} ${
     fullDate[2]
   }, ${fullDate[3]}`;
+
+  let distance = (stepsForDay * 0.762) / 1000;
+  let distanceFormated = Math.round(distance * 10) / 10;
+  let avgActivityMinutes = (stepsForDay * 0.5) / 60;
+  let minHours = minutesFormat(avgActivityMinutes, true);
+  let calories = Math.round(stepsForDay * 0.05);
+
+  screenTwoSectionOne(0, "Very good", "Keep going!");
+  screenTwoSectionTwo(distanceFormated, calories, minHours);
+  animateNumbers("stepsNum", 0, stepsForDay, 200);
 }
 
 function returnToScreen1() {
@@ -130,6 +132,36 @@ function returnToScreen1() {
   }
   document.querySelector("#main").classList.add("screen-1");
   firstScreenData();
+}
+
+function handleScreen2Styles() {
+  let header = document.querySelector("#header");
+  header.classList.add("detailsHeader");
+  header.style.display = "grid";
+  document.getElementById("headerBtn").style.display = "block";
+
+  let main = document.querySelector("#main");
+  main.innerHTML = "";
+  if (document.querySelector("#main.screen-1") !== null) {
+    main.classList.remove("screen-1");
+  }
+  main.classList.add("screen-2");
+}
+
+function initEventListeners() {
+  let navitems = document.getElementsByClassName("navitem");
+  for (let i = 0; i < navitems.length; i++) {
+    navitems[i].addEventListener("click", e => {
+      if (document.querySelector("#daysNav p.active") !== null) {
+        document.querySelector("#daysNav p.active").classList.remove("active");
+      }
+      e.target.classList.add("active");
+      elementDetails(e.target.id);
+    });
+  }
+  document
+    .getElementById("headerArrow")
+    .addEventListener("click", () => returnToScreen1());
 }
 
 function getDayFullName(day) {
@@ -160,10 +192,30 @@ function getMonthFullName(month) {
   }
 }
 
-function minutesFormat(num) {
+function minutesFormat(num, short) {
   let hours = num / 60;
   let rhours = Math.floor(hours);
   let minutes = (hours - rhours) * 60;
   let rminutes = Math.round(minutes);
-  return `${rhours}h ${rminutes}min`;
+  if (short) {
+    return { rhours, rminutes };
+  } else {
+    return `${rhours}h ${rminutes}min`;
+  }
+}
+
+function animateNumbers(id, start, end, duration) {
+  let range = end - start;
+  let current = start;
+  let increment = end > start ? 20 : -20;
+  let stepTime = Math.abs(Math.floor(duration / range));
+  let obj = document.getElementById(id);
+  let timer = setInterval(function() {
+    current += increment;
+    obj.innerHTML = current.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (current >= end) {
+      clearInterval(timer);
+      obj.innerHTML = end.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+  }, stepTime);
 }
