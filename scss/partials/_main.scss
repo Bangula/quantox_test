@@ -1,11 +1,18 @@
 .lightBg {
   background: $transparent-bg;
 }
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 #daysNav {
   display: grid;
   grid-auto-flow: column;
-  margin-top: 30px;
+  margin: 30px 0;
+  margin-left: auto;
+  margin-right: auto;
   justify-content: space-between;
   .navitem {
     margin: 0;
@@ -19,10 +26,20 @@
     transition: all 0.2s;
   }
 }
-
+.screen-1 {
+  background: transparent;
+}
+.screen-2 {
+  background: $white;
+  height: 500px;
+  width: 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 main {
   margin-top: 30px;
   border-radius: 30px;
+
   .activityAvg {
     background: $transparent-bg;
     border-radius: 30px;
@@ -31,10 +48,6 @@ main {
     grid-auto-flow: column;
     grid-template-columns: 1fr 4fr;
     background: $transparent-bg;
-    opacity: 0;
-    width: 120px;
-    overflow: hidden;
-    transition: all 1s;
   }
   .activityData {
     background: $transparent-bg;
@@ -44,11 +57,6 @@ main {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 1fr 2fr 2fr;
-    opacity: 0;
-    width: 150px;
-    max-height: 96px;
-    overflow: hidden;
-    transition: all 1s;
   }
   .iconContainer {
   }

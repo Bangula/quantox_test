@@ -4,6 +4,8 @@
 }
 
 body {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#34c7a0), to(#008aa2));
+  background-image: linear-gradient(to bottom right, #34c7a0, #008aa2);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(9%, #34c7a0), color-stop(52%, #00b6a3), to(#008aa2));
   background: linear-gradient(to bottom, #34c7a0 9%, #00b6a3 52%, #008aa2 100%);
   background-repeat: no-repeat;
@@ -115,11 +117,19 @@ header i {
   background: rgba(255, 255, 255, 0.25);
 }
 
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 #daysNav {
   display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
-  margin-top: 30px;
+  margin: 30px 0;
+  margin-left: auto;
+  margin-right: auto;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -141,6 +151,18 @@ header i {
   transition: all 0.2s;
 }
 
+.screen-1 {
+  background: transparent;
+}
+
+.screen-2 {
+  background: #fff;
+  height: 500px;
+  width: 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 main {
   margin-top: 30px;
   border-radius: 30px;
@@ -156,11 +178,6 @@ main .activityAvg {
   -ms-grid-columns: 1fr 4fr;
       grid-template-columns: 1fr 4fr;
   background: rgba(255, 255, 255, 0.25);
-  opacity: 0;
-  width: 120px;
-  overflow: hidden;
-  -webkit-transition: all 1s;
-  transition: all 1s;
 }
 
 main .activityData {
@@ -173,12 +190,6 @@ main .activityData {
   grid-auto-flow: column;
   -ms-grid-columns: 1fr 2fr 2fr;
       grid-template-columns: 1fr 2fr 2fr;
-  opacity: 0;
-  width: 150px;
-  max-height: 96px;
-  overflow: hidden;
-  -webkit-transition: all 1s;
-  transition: all 1s;
 }
 
 main .activityContent {

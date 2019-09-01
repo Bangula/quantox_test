@@ -8,7 +8,7 @@ const daySteps = {
 
 getData();
 
-(function addNavListeners() {
+(function initEventListeners() {
   let navitems = document.getElementsByClassName("navitem");
   for (let i = 0; i < navitems.length; i++) {
     navitems[i].addEventListener("click", e => {
@@ -19,19 +19,9 @@ getData();
       elementDetails(e.target.id);
     });
   }
-  document.getElementById("headerArrow").addEventListener("click", function() {
-    document.querySelector("#daysNav p.active").classList.remove("active");
-    document.getElementById("headerBtn").style.display = "none";
-    document.getElementById("header").style.display = "block";
-    document.querySelector("#headerText h1").innerHTML = "Welcome!";
-    document.querySelector("#headerText h3").innerHTML =
-      "Overview of your activity";
-    if (document.querySelector("#header.detailsHeader") !== null) {
-      document
-        .querySelector("#header.detailsHeader")
-        .classList.remove("detailsHeader");
-    }
-  });
+  document
+    .getElementById("headerArrow")
+    .addEventListener("click", () => returnToScreen1());
 })();
 
 function getData() {
@@ -44,45 +34,73 @@ function getData() {
       data.forEach((element, index) => {
         let time = element.timestamp;
         let date = new Date(time);
-        let formatedDate = date.toString().split(" "); // Wed Jan 12 2011 12:42:46 GMT-0800 (PST)
+        let formatedDate = date.toString().split(" ");
         let day = formatedDate[0].toLowerCase();
         daySteps[day].steps += element.steps;
         daySteps[day].date = formatedDate;
       });
       firstScreenData();
+      console.log(daySteps);
     })
     .catch(err => console.log(err));
 }
 
 function firstScreenData() {
-  screenOneAnimations();
-  let temp = document.querySelector("#main div.activityAvg");
-  temp.style.opacity = "1";
-  temp.style.width = "100%";
+  document.getElementById("main").innerHTML = "";
+  if (document.querySelector("#main.screen-2") !== null) {
+    document
+      .querySelector("#main")
+      .classList.remove("screen-2")
+      .classList.add("screen-1");
+  }
+
   let totalSteps = 0;
   Object.values(daySteps).forEach(item => (totalSteps += item.steps));
-  let averageActivity = (totalSteps * 0.5) / 60;
-  let calories = Math.round(totalSteps * 0.05);
-  let distance = Math.round((totalSteps * 0.762) / 100);
-  document.getElementById("screen1-activity").innerHTML = averageActivity;
-  document.getElementById("screen1-steps").innerHTML = totalSteps;
-  document.getElementById("screen1-calories").innerHTML = calories;
-  document.getElementById("screen1-distance").innerHTML = distance;
-  console.log(averageActivity);
-}
 
-function screenOneAnimations() {
-  let animes = document.getElementsByClassName("s1-anime");
-  for (let i = 0; i < animes.length; i++) {
-    animes[i].style.opacity = "1";
-    animes[i].style.width = "100%";
-  }
+  let avgActivityMinutes = ((totalSteps / 5) * 0.5) / 60;
+  let avgActivity = minutesFormat(avgActivityMinutes);
+  let calories = Math.round(totalSteps * 0.05);
+  let distance = ((totalSteps / 5) * 0.762) / 1000;
+  let distanceFormated = Math.round(distance * 100) / 100;
+
+  const data = [
+    {
+      text1: "Steps",
+      text2: "Total",
+      value: totalSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+      icon: "directions_run"
+    },
+    {
+      text1: "Calories",
+      text2: "Total burnde",
+      value: calories.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+      icon: "whatshot"
+    },
+    {
+      text1: "Distance",
+      text2: "Average",
+      value: `${distanceFormated}km`,
+      icon: "my_location"
+    }
+  ];
+
+  // Creating templates from templates.js
+  createTemplateOne("Activity", "Average", avgActivity, "timer");
+  data.forEach(item =>
+    createTemplateTwo(item.text1, item.text2, item.value, item.icon)
+  );
 }
 
 function elementDetails(id) {
   document.querySelector("#header").classList.add("detailsHeader");
   document.getElementById("header").style.display = "grid";
   document.getElementById("headerBtn").style.display = "block";
+
+  document.getElementById("main").innerHTML = "";
+  if (document.querySelector("#main.screen-1") !== null) {
+    document.querySelector("#main").classList.remove("screen-1");
+  }
+  document.querySelector("#main").classList.add("screen-2");
 
   let stepsForDay = daySteps[id].steps;
   let fullDate = daySteps[id].date;
@@ -94,21 +112,24 @@ function elementDetails(id) {
   }, ${fullDate[3]}`;
 }
 
-function createElement(
-  elemTag,
-  parentElem,
-  innerHtml,
-  elemClass,
-  elemId,
-  clickEventFun,
-  functionParams
-) {
-  const elem = document.createElement(elemTag);
-  if (innerHtml) elem.innerHTML = innerHtml;
-  if (elemClass) elem.setAttribute("class", elemClass);
-  if (elemId) elem.setAttribute("id", elemId);
-  if (clickEventFun) elem.onclick = clickEventFun(functionParams);
-  parentElem.appendChild(elem);
+function returnToScreen1() {
+  document.querySelector("#daysNav p.active").classList.remove("active");
+  document.getElementById("headerBtn").style.display = "none";
+  document.getElementById("header").style.display = "block";
+  document.querySelector("#headerText h1").innerHTML = "Welcome!";
+  document.querySelector("#headerText h3").innerHTML =
+    "Overview of your activity";
+  if (document.querySelector("#header.detailsHeader") !== null) {
+    document
+      .querySelector("#header.detailsHeader")
+      .classList.remove("detailsHeader");
+  }
+  document.getElementById("main").innerHTML = "";
+  if (document.querySelector("#main.screen-2") !== null) {
+    document.querySelector("#main").classList.remove("screen-2");
+  }
+  document.querySelector("#main").classList.add("screen-1");
+  firstScreenData();
 }
 
 function getDayFullName(day) {
@@ -137,4 +158,12 @@ function getMonthFullName(month) {
     default:
       return null;
   }
+}
+
+function minutesFormat(num) {
+  let hours = num / 60;
+  let rhours = Math.floor(hours);
+  let minutes = (hours - rhours) * 60;
+  let rminutes = Math.round(minutes);
+  return `${rhours}h ${rminutes}min`;
 }
